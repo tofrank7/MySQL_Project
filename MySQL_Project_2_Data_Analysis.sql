@@ -3,8 +3,10 @@
 SELECT *
 FROM layoffs_staging2;
 
+SELECT MAX(total_laid_off), MIN(total_laid_off)
+FROM layoffs_staging2;
 
-SELECT MAX(total_laid_off), MAX(percentage_laid_off)
+SELECT MAX(percentage_laid_off)
 FROM layoffs_staging2;
 
 SELECT *
@@ -15,7 +17,8 @@ ORDER BY total_laid_off DESC;
 SELECT company, SUM(total_laid_off) AS sum_laid_off
 FROM layoffs_staging2
 GROUP BY company
-ORDER BY 2 DESC;
+ORDER BY 2 DESC
+LIMIT 10;
 
 SELECT MIN(`date`), MAX(`date`)
 FROM layoffs_staging2;
@@ -23,12 +26,14 @@ FROM layoffs_staging2;
 SELECT industry, SUM(total_laid_off) AS sum_laid_off
 FROM layoffs_staging2
 GROUP BY industry
-ORDER BY 2 DESC;
+ORDER BY 2 DESC
+LIMIT 10;
 
 SELECT country, SUM(total_laid_off) AS sum_laid_off
 FROM layoffs_staging2
 GROUP BY country
-ORDER BY 2 DESC;
+ORDER BY 2 DESC
+LIMIT 10;
 
 SELECT YEAR(`date`) AS `year`, SUM(total_laid_off) AS sum_laid_off
 FROM layoffs_staging2
@@ -38,7 +43,8 @@ ORDER BY 1 DESC;
 SELECT stage, SUM(total_laid_off) AS sum_laid_off
 FROM layoffs_staging2
 GROUP BY stage
-ORDER BY 2 DESC;
+ORDER BY 2 DESC
+LIMIT 10;
 
 
 SELECT substring(`date`, 1, 7) AS `MONTH`, 
